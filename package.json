@@ -1,0 +1,41 @@
+{
+  "name": "hrr46-mvp",
+  "version": "1.0.0",
+  "description": "Cancer cookbook",
+  "main": "server/index.js",
+  "scripts": {
+    "build": "webpack -d --watch",
+    "start": "nodemon --legacy-watch server/index.js",
+    "seed": "node server/database/models/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "require": "^2.4.20",
+    "styled-components": "^5.1.1",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mztaylor7/hrr46-mvp.git"
+  },
+  "author": "Michael Taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mztaylor7/hrr46-mvp/issues"
+  },
+  "homepage": "https://github.com/mztaylor7/hrr46-mvp#readme"
+}
