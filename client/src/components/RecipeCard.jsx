@@ -20,7 +20,7 @@ const RecipeCard = (props) => {
       {recipe.ingredients.split('\n\n').map((ingredient, i) => {
         return <li key={i}>{ingredient}</li>;
       })}
-      {/* <p>{recipe.ingredients}</p> */}
+      <br/>
       <label>Directions</label>
       <p>{recipe.directions}</p>
       <label>Tip</label>
