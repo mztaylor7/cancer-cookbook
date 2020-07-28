@@ -1,5 +1,11 @@
 import React from 'react';
 
+import './styles.scss';
+
+import Search from './components/Search.jsx';
+import Header from './components/Header.jsx';
+import { getRecipes, getRecipeSearch } from '../services/apiService';
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -10,10 +16,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-        Hello World
-        </div>
+      <div className={"grid-container"}>
+        <Header />
+        <Search getRecipes={getRecipes} getRecipeSearch={getRecipeSearch} />
+        {/* <Filter /> */}
       </div>
     )
   }

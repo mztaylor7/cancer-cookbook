@@ -5,6 +5,6 @@ var dbConnection = process.env.DB_URI;
 
 console.log(dbConnection);
 
-const db = mongoose.connect(dbConnection);
+const db = mongoose.connect(dbConnection, { useUnifiedTopology: true, useNewUrlParser: true });
 
 module.exports = db;

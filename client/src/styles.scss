@@ -1,0 +1,72 @@
+body {
+  background-color: #eeeee4;
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.25fr 0.12fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "headerGrid headerGrid headerGrid headerGrid headerGrid" ". searchGrid searchGrid searchGrid ." ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid";
+  max-height: 100vw;
+}
+
+.headerGrid {
+  grid-area: headerGrid;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #f89500;
+  color: #eeeee4;
+}
+
+.sortGrid {
+  grid-area: sortGrid;
+  justify-content: center;
+  display: flex;
+  right: 0px;
+}
+
+.mainGrid {
+  grid-area: mainGrid;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+}
+
+.searchGrid {
+  grid-area: searchGrid;
+  justify-content: center;
+  max-height: 36px;
+  width: 100%;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.searchForm {
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+.searchField {
+  box-sizing: border-box;
+  width: 100%;
+  border: 3px solid #f89500;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px;
+  color: #9DBFAF;
+  outline: none;
+  background-color: #eeeee4;
+}
+
+.searchField:focus{
+  color: #f89500;
+}
