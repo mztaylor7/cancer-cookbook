@@ -38,7 +38,7 @@ const Search = ({ getRecipes, getRecipeSearch }) => {
           <input className={"searchField"} type="text" value={query} id="search-input" placeholder="Search for recipes" onChange={handleOnInputChange} />
         </form>
       </div>
-      <RecipesViewer recipes={recipes} />
+      <RecipesViewer query={query} recipes={recipes} />
       <Sort />
     </React.Fragment>
   )

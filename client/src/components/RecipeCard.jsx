@@ -7,26 +7,32 @@ const RecipeCard = (props) => {
   const { recipe } = props;
 
   const symptomParse = () => {
-    var symptomArray = recipe.symptoms.split(' ');
+    return recipe.symptoms.split(' ');
 
   }
 
   return (
     <Container>
       <h2>{recipe.title}</h2>
-      <label>Description</label>
+      <label>Symptoms:</label>
+      {symptomParse().map((symptom, i) => {
+        return <li key={i}>{symptom} </li>
+      })}
+      <br/>
+      <label>Description:</label>
       <p>{recipe.description}</p>
-      <label>Ingredients</label>
+      <label>Ingredients:</label>
       {recipe.ingredients.split('\n\n').map((ingredient, i) => {
         return <li key={i}>{ingredient}</li>;
       })}
       <br/>
-      <label>Directions</label>
+      <label>Directions:</label>
       <p>{recipe.directions}</p>
-      <label>Tip</label>
+      <label>Tip:</label>
       <p>{recipe.tip || `No tips at the moment`}</p>
       <div>
-        <label>Nutritional Information</label>
+        <label>Nutritional Information:</label>
+        <hr/>
         <li>Calories: {recipe.nutrition[0].calories}</li>
         <li>Fat: {recipe.nutrition[0].fat}</li>
         <li>Saturated Fat: {recipe.nutrition[0].saturatedFat}</li>
@@ -44,12 +50,14 @@ const RecipeCard = (props) => {
 }
 
 const Container = styled.div`
-  border: 3px solid;
+  border: 3px solid #f89500;
   display: flex;
   flex-direction: column;
   padding: 20px;
   margin-bottom: 20px;
   position: static;
+  background-color: #fff;
+  border-radius: 5px;
 `
 
 export default RecipeCard;
