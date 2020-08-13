@@ -59,7 +59,7 @@ const recipes = [
       calcium: '120 mg',
       potassium: '710 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/spring+minestrone.jpg',
     tip: `For the family (or when the side effect has resolved), swirl a dab of prepared pesto into the soup or top with freshly grated Parmesan cheese for more assertive flavor.`,
     notes: ''
   },
@@ -104,7 +104,7 @@ const recipes = [
       calcium: '100 mg',
       potassium: '40 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/baked+rice+balls.jpg',
     tip: ``,
     notes: ''
   },
@@ -149,7 +149,7 @@ const recipes = [
       calcium: '60 mg',
       potassium: '650 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/tuna+salad.jpg',
     tip: ``,
     notes: ''
   },
@@ -192,7 +192,7 @@ const recipes = [
       calcium: '40 mg',
       potassium: '250 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/roasted+cauliflower+soup.jpg',
     tip: `This recipe may not be suitable if you are experiencing gas or bloating.`,
     notes: ''
   },
@@ -225,7 +225,7 @@ const recipes = [
       calcium: '70 mg',
       potassium: '160 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/scrambled+eggs+with+cream+cheese+and+chives.jpg',
     tip: ``,
     notes: ''
   },
@@ -278,7 +278,7 @@ const recipes = [
       calcium: '340 mg',
       potassium: '790 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/beef+and+spinach+lasagna+with+parm.jpg',
     tip: ``,
     notes: ''
   },
@@ -325,7 +325,7 @@ const recipes = [
       calcium: '100 mg',
       potassium: '380 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/shrimp+puttanesca.jpg',
     tip: ``,
     notes: ''
   },
@@ -386,7 +386,7 @@ const recipes = [
       calcium: '60 mg',
       potassium: '360 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/curried+chicken+and+rice.jpg',
     tip: `Most supermarkets sell chicken cut into eight pieces. Cut the breasts in half for ten total pieces.`,
     notes: ''
   },
@@ -435,7 +435,7 @@ const recipes = [
       calcium: '530 mg',
       potassium: '370 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/spinach+artichoke+dip+quesadillas.jpg',
     tip: ``,
     notes: ''
   },
@@ -478,7 +478,7 @@ const recipes = [
       calcium: '30 mg',
       potassium: '420 mg',
     }],
-    image: '',
+    image: 'https://cancer-cookbook-images.s3.us-east-2.amazonaws.com/miso+glazed+salmon.jpg',
     tip: `If you are experiencing neutropenia, uncooked miso paste should be avoided.`,
     notes: ''
   }

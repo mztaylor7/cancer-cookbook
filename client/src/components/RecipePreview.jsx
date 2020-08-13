@@ -7,12 +7,26 @@ const RecipePreview = () => {
 
   return (
     <Container>
+      <ImageCon>
 
+      </ImageCon>
+      <Description>
+
+      </Description>
+      <Title>
+
+      </Title>
     </Container>
   )
 }
 
 const Container = styled.div`
+
+`
+const ImageCon = styled.div`
+
+`
+const Title = styled.div`
 
 `
 
