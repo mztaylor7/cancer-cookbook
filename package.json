@@ -34,12 +34,9 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mztaylor7/hrr46-mvp.git"
+    "url": "git+https://github.com/mztaylor7/cancer-cookbook.git"
   },
   "author": "Michael Taylor",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mztaylor7/hrr46-mvp/issues"
-  },
-  "homepage": "https://github.com/mztaylor7/hrr46-mvp#readme"
+  "homepage": "https://github.com/mztaylor7/cancer-cookbook#readme"
 }
