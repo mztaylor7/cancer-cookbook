@@ -13,10 +13,10 @@ const RecipePreview = (props) => {
         </ImageHolder>
       </ImageCon>
       <Description>
-
+        <p>{recipe.description}</p>
       </Description>
       <Title>
-
+        <p>{recipe.title}</p>
       </Title>
     </Container>
   )
