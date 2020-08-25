@@ -22,17 +22,20 @@ const RecipePreview = (props) => {
   )
 }
 
+
+// experimenting with width: 297px; for flex to work properly
 const Container = styled.div`
   position: relative;
-  display: inline-block;
+  display: block;
   margin: .5rem;
   width: calc(25% - 1rem);
+  min-height: 400px;
 `
 const ImageCon = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 4px;
   margin-bottom: .5rem;
   padding-bottom: 100%;

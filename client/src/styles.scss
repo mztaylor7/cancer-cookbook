@@ -34,9 +34,11 @@ body {
 
 .mainGrid {
   grid-area: mainGrid;
-  justify-content: center;
+  // justify-content: center;
   padding: 10px;
-  position: relative;
+  // position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .searchGrid {
