@@ -10,6 +10,7 @@ const RecipePreview = (props) => {
       <ImageCon>
         <ImageHolder>
           <img  src={recipe.image}/>
+          {console.log(recipe)}
         </ImageHolder>
       </ImageCon>
       <Description>
@@ -37,7 +38,8 @@ const ImageCon = styled.div`
   margin-bottom: .5rem;
 `
 const Title = styled.div`
-
+  display: flex;
+  flex-direction: row;
 `
 
 const ImageHolder = styled.div`
@@ -47,6 +49,11 @@ const ImageHolder = styled.div`
   width: 100%;
   height: 100%;
   display: block;
+`
+
+const Description = styled.div`
+  position: relative;
+  overflow: hidden;
 `
 
 export default RecipePreview;
