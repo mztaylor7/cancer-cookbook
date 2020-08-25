@@ -8,13 +8,12 @@ const RecipePreview = (props) => {
   return (
     <Container>
       <ImageCon>
-        <ImageHolder>
-          <img  src={recipe.image}/>
-          {console.log(recipe)}
-        </ImageHolder>
+        {/* <ImageHolder> */}
+          <img className={"recipePreviewImage"} src={recipe.image}/>
+        {/* </ImageHolder> */}
       </ImageCon>
       <Description>
-        <p>{recipe.description}</p>
+        <p>{recipe.description.substring(0, 60)}</p>
       </Description>
       <Title>
         <p>{recipe.title}</p>
@@ -33,9 +32,10 @@ const ImageCon = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 4px;
   margin-bottom: .5rem;
+  padding-bottom: 100%;
 `
 const Title = styled.div`
   display: flex;
@@ -46,9 +46,10 @@ const ImageHolder = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
+  width: auto;
   height: 100%;
   display: block;
+  object-fit: cover;
 `
 
 const Description = styled.div`
