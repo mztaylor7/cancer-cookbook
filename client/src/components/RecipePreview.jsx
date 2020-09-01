@@ -12,12 +12,12 @@ const RecipePreview = (props) => {
           <img className={"recipePreviewImage"} src={recipe.image}/>
         {/* </ImageHolder> */}
       </ImageCon>
-      <Description>
-        <p>{recipe.description.substring(0, 60)}</p>
-      </Description>
       <Title>
         <p>{recipe.title}</p>
       </Title>
+      <Description>
+        <p>{recipe.description.substring(0, 60)}</p>
+      </Description>
     </Container>
   )
 }
