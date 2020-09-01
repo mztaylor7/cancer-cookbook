@@ -28,7 +28,7 @@ const Container = styled.div`
   position: relative;
   display: block;
   margin: .5rem;
-  width: calc(25% - 1rem);
+  width: 236px;
   min-height: 400px;
 `
 const ImageCon = styled.div`
