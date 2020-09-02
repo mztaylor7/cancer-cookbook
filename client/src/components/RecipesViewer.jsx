@@ -5,7 +5,6 @@ import RecipeCard from './RecipeCard.jsx';
 import RecipePreview from './RecipePreview.jsx';
 
 const RecipesViewer = ({ recipes, query }) => {
-  // const [recipes, setRecipes] = useState([]);
 
   const sortRecipes = () => {
     for (var i = 0; i < recipes.length; i++) {
@@ -26,7 +25,6 @@ const RecipesViewer = ({ recipes, query }) => {
   return (
     <div className={"mainGrid"}>
       {sortRecipes().map((recipe, i) => {
-        // return <RecipeCard key={i} recipe={recipe} />;
         return <RecipePreview key={i} recipe={recipe} />;
       })}
     </div >

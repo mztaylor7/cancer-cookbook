@@ -30,6 +30,7 @@ const Search = ({ getRecipes, getRecipeSearch }) => {
     }
   }, [query])
 
+    // Want to get rid of searchGrid and just add the search bar to mainGrid
 
   return (
     <React.Fragment>
