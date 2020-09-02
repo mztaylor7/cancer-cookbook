@@ -3,8 +3,8 @@ import '../styles.scss';
 import styled from 'styled-components';
 
 
-const RecipeCard = (props) => {
-  const { recipe } = props;
+const RecipeCard = ({recipe}) => {
+  // const { recipe } = props;
 
   const symptomParse = () => {
     return recipe.symptoms.split(' ');

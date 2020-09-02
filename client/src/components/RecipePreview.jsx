@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import '../styles.scss';
 import styled from 'styled-components';
-import RecipeModal from './RecipeModal';
-import useModal from './useModal';
+import RecipeModal from './RecipeModal.jsx';
+import useModal from './useModal.jsx';
 
 const RecipePreview = (props) => {
   const { recipe } = props;
   const {isShowing, toggle} = useModal();
 
   return (
-    <Container>
-      <ImageCon>
-        {/* <ImageHolder> */}
-          <img className={"recipePreviewImage"} src={recipe.image}/>
-        {/* </ImageHolder> */}
-      </ImageCon>
-      <Title>
-        <p>{recipe.title}</p>
-      </Title>
-      <Description>
-        <p>{recipe.description.substring(0, 60)}</p>
-      </Description>
-      <RecipeModal isShowing={isShowing} hide={toggle} recipe={recipe}/>
-    </Container>
+    <div onClick={console.log('click'), toggle}>
+      <Container>
+        <ImageCon>
+          {/* <ImageHolder> */}
+            <img className={"recipePreviewImage"} src={recipe.image}/>
+          {/* </ImageHolder> */}
+        </ImageCon>
+        <Title>
+          <p>{recipe.title}</p>
+        </Title>
+        <Description>
+          <p>{recipe.description.substring(0, 60)}</p>
+        </Description>
+        <RecipeModal isShowing={isShowing} hide={toggle} recipe={recipe}/>
+      </Container>
+    </div>
   )
 }
 
