@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 
 const RecipeCard = ({recipe}) => {
-  // const { recipe } = props;
 
   const symptomParse = () => {
     return recipe.symptoms.split(' ');

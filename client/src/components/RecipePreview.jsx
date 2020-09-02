@@ -9,12 +9,10 @@ const RecipePreview = (props) => {
   const {isShowing, toggle} = useModal();
 
   return (
-    <div onClick={console.log('click'), toggle}>
+    <div className="preview-wrapper" onClick={toggle}>
       <Container>
         <ImageCon>
-          {/* <ImageHolder> */}
-            <img className={"recipePreviewImage"} src={recipe.image}/>
-          {/* </ImageHolder> */}
+          <img className={"recipePreviewImage"} src={recipe.image}/>
         </ImageCon>
         <Title>
           <p>{recipe.title}</p>
@@ -33,9 +31,9 @@ const RecipePreview = (props) => {
 const Container = styled.div`
   position: relative;
   display: block;
-  margin: .5rem;
   width: 236px;
   min-height: 400px;
+  box-sizing: border-box;
 `
 const ImageCon = styled.div`
   position: relative;
@@ -49,16 +47,6 @@ const ImageCon = styled.div`
 const Title = styled.div`
   display: flex;
   flex-direction: row;
-`
-
-const ImageHolder = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: auto;
-  height: 100%;
-  display: block;
-  object-fit: cover;
 `
 
 const Description = styled.div`

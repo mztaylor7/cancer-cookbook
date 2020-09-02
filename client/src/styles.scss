@@ -117,10 +117,18 @@ body {
   margin: 1.75rem auto;
   border-radius: 3px;
   max-width: 1300px;
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 .modal-header {
   display: flex;
   justify-content: flex-end;
+  box-sizing: border-box;
+  height: 2rem;
+}
+
+.preview-wrapper {
+  margin: .5rem;
+  width: 236;
+  box-sizing: border-box;
 }
