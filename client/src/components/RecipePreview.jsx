@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import '../styles.scss';
 import styled from 'styled-components';
+import RecipeModal from './RecipeModal';
+import useModal from './useModal';
 
 const RecipePreview = (props) => {
   const { recipe } = props;
+  const {isShowing, toggle} = useModal();
 
   return (
     <Container>
@@ -18,6 +21,7 @@ const RecipePreview = (props) => {
       <Description>
         <p>{recipe.description.substring(0, 60)}</p>
       </Description>
+      <RecipeModal isShowing={isShowing} hide={toggle} recipe={recipe}/>
     </Container>
   )
 }
