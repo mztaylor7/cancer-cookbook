@@ -3,6 +3,7 @@ import React from 'react';
 import './styles.scss';
 
 import Search from './components/Search.jsx';
+import RecipesViewer from './components/RecipesViewer.jsx';
 import Header from './components/Header.jsx';
 import { getRecipes, getRecipeSearch } from '../services/apiService';
 
@@ -18,7 +19,8 @@ class App extends React.Component {
     return (
       <div className={"grid-container"}>
         <Header />
-        <Search getRecipes={getRecipes} getRecipeSearch={getRecipeSearch} />
+        {/* <Search getRecipes={getRecipes} getRecipeSearch={getRecipeSearch} /> */}
+        <RecipesViewer getRecipes={getRecipes} getRecipeSearch={getRecipeSearch} />
         {/* <Filter /> */}
       </div>
     )

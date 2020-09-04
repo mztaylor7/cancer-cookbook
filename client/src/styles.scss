@@ -6,9 +6,9 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.25fr 0.12fr 1fr 1fr 1fr;
+  grid-template-rows: 0.25fr 1fr 1fr 1fr;
   gap: 1px 1px;
-  grid-template-areas: "headerGrid headerGrid headerGrid headerGrid headerGrid" ". searchGrid searchGrid searchGrid ." ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid";
+  grid-template-areas: "headerGrid headerGrid headerGrid headerGrid headerGrid" ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid" ". mainGrid mainGrid mainGrid sortGrid";
   max-height: 100vw;
 }
 
@@ -41,17 +41,32 @@ body {
   flex-wrap: wrap;
 }
 
-.searchGrid {
-  grid-area: searchGrid;
+.recipesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.searchWrapper {
   justify-content: center;
   height: 56px;
   width: 100%;
-  padding: 2px;
-  // margin-bottom: 5px;
   position: relative;
   display: flex;
   align-items: center;
+  padding-bottom: 10rem;
 }
+
+// .searchGrid {
+//   grid-area: searchGrid;
+//   justify-content: center;
+//   height: 56px;
+//   width: 100%;
+//   padding: 2px;
+//   // margin-bottom: 5px;
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+// }
 
 .searchForm {
   box-sizing: border-box;

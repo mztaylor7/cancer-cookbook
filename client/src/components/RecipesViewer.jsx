@@ -3,8 +3,33 @@ import '../styles.scss';
 
 import RecipeCard from './RecipeCard.jsx';
 import RecipePreview from './RecipePreview.jsx';
+import Sort from './Sort.jsx';
 
-const RecipesViewer = ({ recipes, query }) => {
+const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
+  const [query, setQuery] = useState('');
+  const [recipes, setRecipes] = useState([]);
+
+  React.useEffect(() => {
+    getRecipes().then((response) => {
+      if (response.data.length > 0) {
+        setRecipes(response.data);
+      }
+    });
+  }, [])
+
+  const handleOnInputChange = (e) => {
+    setQuery(e.target.value);
+  }
+  React.useEffect(() => {
+    if (query) {
+      getRecipeSearch(query)
+        .then((response) => {
+          if (response.data.length > 0) {
+            setRecipes(response.data);
+          }
+        });
+    }
+  }, [query])
 
   const sortRecipes = () => {
     for (var i = 0; i < recipes.length; i++) {
@@ -23,11 +48,21 @@ const RecipesViewer = ({ recipes, query }) => {
   }
 
   return (
-    <div className={"mainGrid"}>
-      {sortRecipes().map((recipe, i) => {
-        return <RecipePreview key={i} recipe={recipe} />;
-      })}
-    </div >
+    <React.Fragment>
+      <div className={"mainGrid"}>
+        <div className={"searchWrapper"}>
+          <form className={"searchForm"}>
+            <input className={"searchField"} type="text" value={query} id="search-input" placeholder="Search for recipes" onChange={handleOnInputChange} />
+          </form>
+        </div>
+        <div className={"recipesWrapper"}>
+          {sortRecipes().map((recipe, i) => {
+            return <RecipePreview key={i} recipe={recipe} />;
+          })}
+        </div>
+      </div >
+      <Sort />
+    </React.Fragment>
   )
 }
 
