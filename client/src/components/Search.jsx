@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles.scss';
 
 import RecipesViewer from './RecipesViewer.jsx';
@@ -8,18 +8,19 @@ const Search = ({ getRecipes, getRecipeSearch }) => {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState([]);
 
-  React.useEffect(() => {
-    getRecipes().then((response) => {
-      if (response.data.length > 0) {
-        setRecipes(response.data);
-      }
-    });
+  useEffect(() => {
+    getRecipes()
+      .then((response) => {
+        if (response.data.length > 0) {
+          setRecipes(response.data);
+        }
+      });
   }, [])
 
   const handleOnInputChange = (e) => {
     setQuery(e.target.value);
   }
-  React.useEffect(() => {
+  useEffect(() => {
     if (query) {
       getRecipeSearch(query)
         .then((response) => {
