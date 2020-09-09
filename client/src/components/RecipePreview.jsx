@@ -27,11 +27,11 @@ const RecipePreview = (props) => {
 }
 
 
-// experimenting with width: 297px; for flex to work properly
+// experimenting with width: 297px; 236px is original; for flex to work properly 1536px/2560px width; 1152px/1980px width;
 const Container = styled.div`
   position: relative;
   display: block;
-  width: 236px;
+  width: 100%;
   min-height: 400px;
   box-sizing: border-box;
 `

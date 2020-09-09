@@ -82,15 +82,17 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   return (
     <React.Fragment>
       <div className={"mainGrid"}>
-        <div className={"searchWrapper"}>
-          <form className={"searchForm"}>
-            <input className={"searchField"} type="text" value={query} id="search-input" placeholder="Search for recipes" onChange={handleOnInputChange} />
-          </form>
-        </div>
-        <div className={"recipesWrapper"}>
-          {loading ? <LoadingSpinner /> : sortRecipes().map((recipe, i) => {
-            return <RecipePreview key={i} recipe={recipe} />;
-          })}
+        <div className={"mainGridContents"}>
+          <div className={"searchWrapper"}>
+            <form className={"searchForm"}>
+              <input className={"searchField"} type="text" value={query} id="search-input" placeholder="Search for recipes" onChange={handleOnInputChange} />
+            </form>
+          </div>
+          <div className={"recipesWrapper"}>
+            {loading ? <LoadingSpinner /> : sortRecipes().map((recipe, i) => {
+              return <RecipePreview key={i} recipe={recipe} />;
+            })}
+          </div>
         </div>
       </div >
       <Sort />
