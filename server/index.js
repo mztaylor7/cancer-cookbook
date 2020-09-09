@@ -22,6 +22,7 @@ app.get('/api/recipes', (req, res) => {
     })
 })
 
+// Maybe look into throttle instead of cancel
 app.get('/api/recipes/search', (req, res) => {
   const searchTerm = req.query.search;
   Recipes.find({ $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]}).limit(10)

@@ -3,6 +3,7 @@ import '../styles.scss';
 
 import RecipeCard from './RecipeCard.jsx';
 import RecipePreview from './RecipePreview.jsx';
+import LoadingSpinner from './LoadingSpinner.jsx';
 import Sort from './Sort.jsx';
 import axios from 'axios';
 
@@ -14,8 +15,10 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getRecipes().then((response) => {
       if (response.data.length > 0) {
+        setLoading(false);
         setRecipes(response.data);
       }
     });
@@ -40,7 +43,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
           const response = await axios.get(`/api/recipes/search?search=${query}`, {
             cancelToken: cancelToken.token
           });
-          setLoading(false);
+          await setLoading(false);
           setRecipes(response.data);
         } catch(err) {
           if (axios.isCancel(err)) {
@@ -85,7 +88,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
           </form>
         </div>
         <div className={"recipesWrapper"}>
-          {sortRecipes().map((recipe, i) => {
+          {loading ? <LoadingSpinner /> : sortRecipes().map((recipe, i) => {
             return <RecipePreview key={i} recipe={recipe} />;
           })}
         </div>

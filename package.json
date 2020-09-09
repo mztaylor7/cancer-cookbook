@@ -1,5 +1,5 @@
 {
-  "name": "hrr46-mvp",
+  "name": "cancercookbook",
   "version": "1.0.0",
   "description": "Cancer cookbook",
   "main": "server/index.js",
@@ -27,6 +27,7 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-loader-spinner": "^3.1.14",
     "regenerator-runtime": "^0.13.7",
     "require": "^2.4.20",
     "sass-loader": "^9.0.2",
