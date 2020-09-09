@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles.scss';
 
 import RecipeCard from './RecipeCard.jsx';
 import RecipePreview from './RecipePreview.jsx';
 import Sort from './Sort.jsx';
+import axios from 'axios';
+
+
 
 const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getRecipes().then((response) => {
       if (response.data.length > 0) {
         setRecipes(response.data);
@@ -20,14 +24,42 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   const handleOnInputChange = (e) => {
     setQuery(e.target.value);
   }
-  React.useEffect(() => {
+
+  useEffect(() => {
+    let source;
+    // setLoading(true);
     if (query) {
-      getRecipeSearch(query)
-        .then((response) => {
-          if (response.data.length > 0) {
-            setRecipes(response.data);
+      const searchRecipes = async () => {
+        if (typeof source !== typeof undefined) {
+          source.cancel("Cancelled due to new request");
+        }
+
+        source = axios.CancelToken.source();
+
+        try {
+          const response = await axios.get('/api/recipes/search', {
+            source: source.token,
+            params: {search: query}
+          });
+          // if (response.data.length > 0) {
+          //   await setRecipes(response.data)
+          // }
+          setRecipes(response.data);
+        } catch(err) {
+          if (axios.isCancel(err)) {
+            console.log('Request Cancelled', err)
+          } else {
+            console.log(err)
           }
-        });
+        }
+      }
+      searchRecipes();
+      // getRecipeSearch(query)
+      //   .then((response) => {
+      //     if (response.data.length > 0) {
+      //       setRecipes(response.data);
+      //     }
+      //   });
     }
   }, [query])
 
@@ -42,7 +74,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
       }
     }
     recipes.sort((a, b) => {
-      return a.sortWeight-b.sortWeight
+      return a.sortWeight - b.sortWeight
     })
     return recipes;
   }
