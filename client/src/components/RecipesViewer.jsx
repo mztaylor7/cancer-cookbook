@@ -25,25 +25,22 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
     setQuery(e.target.value);
   }
 
+  let cancelToken;
   useEffect(() => {
-    let source;
-    // setLoading(true);
+    setLoading(true);
     if (query) {
       const searchRecipes = async () => {
-        if (typeof source !== typeof undefined) {
-          source.cancel("Cancelled due to new request");
+        if (cancelToken) {
+          cancelToken.cancel("Cancelled due to new request");
         }
 
-        source = axios.CancelToken.source();
+        cancelToken = axios.CancelToken.source();
 
         try {
-          const response = await axios.get('/api/recipes/search', {
-            source: source.token,
-            params: {search: query}
+          const response = await axios.get(`/api/recipes/search?search=${query}`, {
+            cancelToken: cancelToken.token
           });
-          // if (response.data.length > 0) {
-          //   await setRecipes(response.data)
-          // }
+          setLoading(false);
           setRecipes(response.data);
         } catch(err) {
           if (axios.isCancel(err)) {
