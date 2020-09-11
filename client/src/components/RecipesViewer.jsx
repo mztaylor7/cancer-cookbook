@@ -4,7 +4,7 @@ import '../styles.scss';
 import RecipeCard from './RecipeCard.jsx';
 import RecipePreview from './RecipePreview.jsx';
 import LoadingSpinner from './LoadingSpinner.jsx';
-import Sort from './Sort.jsx';
+import Filter from './Filter.jsx';
 import axios from 'axios';
 
 
@@ -95,7 +95,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
           </div>
         </div>
       </div >
-      <Sort />
+      <Filter />
     </React.Fragment>
   )
 }

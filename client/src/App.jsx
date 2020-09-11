@@ -2,7 +2,6 @@ import React from 'react';
 
 import './styles.scss';
 
-import Search from './components/Search.jsx';
 import RecipesViewer from './components/RecipesViewer.jsx';
 import Header from './components/Header.jsx';
 import { getRecipes, getRecipeSearch } from '../services/apiService';

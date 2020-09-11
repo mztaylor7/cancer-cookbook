@@ -12,6 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
+var searchDB = (searchTerm) => {
+  var result = { $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]}
+  return result;
+}
+
 app.get('/api/recipes', (req, res) => {
   Recipes.find({}).limit(10)
     .then((recipes) => {
@@ -25,7 +30,7 @@ app.get('/api/recipes', (req, res) => {
 // Maybe look into throttle instead of cancel
 app.get('/api/recipes/search', (req, res) => {
   const searchTerm = req.query.search;
-  Recipes.find({ $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]}).limit(10)
+  Recipes.find(searchDB(searchTerm)).limit(10)
     .then((recipes) => {
       res.status(200).json(recipes);
     })
