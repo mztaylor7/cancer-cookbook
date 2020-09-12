@@ -8,7 +8,6 @@ import Filter from './Filter.jsx';
 import axios from 'axios';
 
 
-
 const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState([]);
@@ -32,28 +31,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
   useEffect(() => {
     setLoading(true);
     if (query) {
-      const searchRecipes = async () => {
-        if (cancelToken) {
-          cancelToken.cancel("Cancelled due to new request");
-        }
-
-        cancelToken = axios.CancelToken.source();
-
-        try {
-          const response = await axios.get(`/api/recipes/search?search=${query}`, {
-            cancelToken: cancelToken.token
-          });
-          await setLoading(false);
-          setRecipes(response.data);
-        } catch(err) {
-          if (axios.isCancel(err)) {
-            console.log('Request Cancelled', err)
-          } else {
-            console.log(err)
-          }
-        }
-      }
-      searchRecipes();
+      searchRecipes(`/api/recipes/search?search=${query}`);
       // getRecipeSearch(query)
       //   .then((response) => {
       //     if (response.data.length > 0) {
@@ -62,6 +40,28 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
       //   });
     }
   }, [query])
+
+  const searchRecipes = async (url) => {
+    if (cancelToken) {
+      cancelToken.cancel("Cancelled due to new request");
+    }
+
+    cancelToken = axios.CancelToken.source();
+
+    try {
+      const response = await axios.get(url, {
+        cancelToken: cancelToken.token
+      });
+      await setLoading(false);
+      setRecipes(response.data);
+    } catch(err) {
+      if (axios.isCancel(err)) {
+        console.log('Request Cancelled', err)
+      } else {
+        console.log(err)
+      }
+    }
+  }
 
   const sortRecipes = () => {
     for (var i = 0; i < recipes.length; i++) {
@@ -95,7 +95,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
           </div>
         </div>
       </div >
-      <Filter />
+      <Filter searchRecipes={searchRecipes} query={query} setLoading={setLoading} />
     </React.Fragment>
   )
 }

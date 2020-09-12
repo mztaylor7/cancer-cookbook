@@ -39,6 +39,18 @@ app.get('/api/recipes/search', (req, res) => {
     })
 })
 
+app.get('/api/recipes/filter', (req, res) => {
+  const searchTerm = req.query.search;
+  const filter = req.query.filter;
+  Recipes.find(searchDB(searchTerm)).limit(10)
+    .then((recipes) => {
+      res.status(200).json(recipes);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    })
+})
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 })

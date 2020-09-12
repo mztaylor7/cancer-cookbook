@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles.scss';
 
-const Filter = () => {
+const Filter = ({query, searchRecipes, setLoading}) => {
   const [symptoms, setSymptoms] = useState([]);
+
+  useEffect(() => {
+    setLoading();
+    if(query) {
+      searchRecipes(`/api/recipes/filter?search=${query}`)
+    }
+  }, [symptoms])
 
   var radioButton = (radioName, index) => {
     var radioNameLower = radioName[0].toLowerCase() + radioName.substring(1);
