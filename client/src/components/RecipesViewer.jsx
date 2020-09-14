@@ -32,12 +32,6 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
     setLoading(true);
     if (query) {
       searchRecipes(`/api/recipes/search?search=${query}`);
-      // getRecipeSearch(query)
-      //   .then((response) => {
-      //     if (response.data.length > 0) {
-      //       setRecipes(response.data);
-      //     }
-      //   });
     }
   }, [query])
 

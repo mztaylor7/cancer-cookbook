@@ -1,28 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import '../styles.scss';
 
-const Filter = ({query, searchRecipes, setLoading}) => {
+const Filter = ({ query, searchRecipes, setLoading }) => {
+  // const { query, searchRecipes, setLoading } = props;
   const [symptoms, setSymptoms] = useState([]);
 
   useEffect(() => {
-    setLoading();
+    setLoading(true);
     if(query) {
-      searchRecipes(`/api/recipes/filter?search=${query}`)
+      console.log('query: ', query)
+      searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join(' ')}`);
     }
-  }, [symptoms])
+    // console.log('query: ', query)
+    // searchRecipes(`/api/recipes/filter?search=${query}`)
+  }, [JSON.stringify(symptoms)])
+
+  const symptomParser = (symptom) => {
+    switch (symptom) {
+      case 'Nasuea':
+        return 'N';
+        break;
+      case 'Diarrhea':
+        return 'D';
+        break;
+      case 'Constipation':
+        return 'C';
+        break;
+      case 'Trouble Swallowing':
+        return 'TS';
+        break;
+      case 'Sore Mouth':
+        return 'SM';
+        break;
+      case 'Unintentional Weight Loss':
+        return 'WL';
+        break;
+      case 'Taste Changes':
+        return 'TC';
+        break;
+    }
+  }
 
   var radioButton = (radioName, index) => {
     var radioNameLower = radioName[0].toLowerCase() + radioName.substring(1);
     var noSpace;
+    var parsed = symptomParser(radioName);
     if (radioNameLower.indexOf(" ") !== -1) {
       noSpace = radioNameLower.replace(/\s+/g, '');
     } else {
-      noSpace = radioNameLower
+      noSpace = radioNameLower;
     }
 
     return(
     <label key={index}>
-      <input type="checkbox" name={noSpace} value={radioName} key={index} onChange={selectionChanged} />
+      <input type="checkbox" name={noSpace} value={parsed} key={index} onChange={selectionChanged} />
       {radioName}
     </label>
     )
@@ -52,7 +83,7 @@ const Filter = ({query, searchRecipes, setLoading}) => {
       }
       return symptoms;
     })
-    console.log("symptoms: ", symptoms)
+    console.log("symptoms: ", symptoms.join(' '))
   }
 
   return (
