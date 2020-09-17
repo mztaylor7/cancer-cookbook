@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 
 const app = express();
-const PORT = process.env.PORT || 3006;
+const PORT = 3005;
 
 const Recipes = require('./database/models/model.js');
 
@@ -15,7 +15,12 @@ app.use(express.static(__dirname + '/../client/dist'));
 var searchDB = (searchTerm, filter) => {
   var result = {};
   if (filter) {
-    result = { $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}, {"symptoms": { "$regex": filter, "$options": "i"}}]}
+    result = {
+      $and: [
+        $or: [{"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}],
+        {"symptoms": { $all: filter}}
+      ]
+    }
   } else {
     result = { $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]}
   }
@@ -48,7 +53,7 @@ app.get('/api/recipes/search', (req, res) => {
 app.get('/api/recipes/filter', (req, res) => {
   const searchTerm = req.query.search;
   const filter = req.query.filter;
-  Recipes.find(searchDB(searchTerm, filter)).limit(10)
+  Recipes.find(searchDB(searchTerm)).exec(()).limit(10)
     .then((recipes) => {
       res.status(200).json(recipes);
     })

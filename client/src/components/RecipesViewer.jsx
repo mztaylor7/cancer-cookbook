@@ -89,7 +89,7 @@ const RecipesViewer = ({ getRecipes, getRecipeSearch }) => {
           </div>
         </div>
       </div >
-      <Filter searchRecipes={searchRecipes} query={query} setLoading={setLoading} />
+      <Filter setRecipes={setRecipes} query={query} setLoading={setLoading} />
     </React.Fragment>
   )
 }

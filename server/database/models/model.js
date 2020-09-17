@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 const recipesSchema = new mongoose.Schema({
   title: String,
   dishType: String,
-  symptoms: String,
+  symptoms: [String],
   description: String,
   servings: String,
   ingredients: String,

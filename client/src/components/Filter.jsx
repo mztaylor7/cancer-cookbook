@@ -1,19 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import '../styles.scss';
 
-const Filter = ({ query, searchRecipes, setLoading }) => {
+import axios from 'axios';
+
+const Filter = ({ query, setLoading, setRecipes }) => {
   // const { query, searchRecipes, setLoading } = props;
   const [symptoms, setSymptoms] = useState([]);
 
-  useEffect(() => {
-    setLoading(true);
-    if(query) {
-      console.log('query: ', query)
-      searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join(' ')}`);
+  let cancelToken;
+  const searchRecipes = async (url) => {
+    if (cancelToken) {
+      cancelToken.cancel("Cancelled due to new request");
     }
-    // console.log('query: ', query)
-    // searchRecipes(`/api/recipes/filter?search=${query}`)
-  }, [JSON.stringify(symptoms)])
+
+    cancelToken = axios.CancelToken.source();
+
+    try {
+      const response = await axios.get(url, {
+        cancelToken: cancelToken.token
+      });
+      await setLoading(false);
+      setRecipes(response.data);
+    } catch(err) {
+      if (axios.isCancel(err)) {
+        console.log('Request Cancelled', err)
+      } else {
+        console.log(err)
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log('useEffect');
+    // if(query) {
+    //   console.log('query: ', query)
+    //   searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join('')}`);
+    // }
+    console.log('query: ', query)
+    searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join('')}`)
+  }, [symptoms.length])
 
   const symptomParser = (symptom) => {
     switch (symptom) {
@@ -83,7 +108,7 @@ const Filter = ({ query, searchRecipes, setLoading }) => {
       }
       return symptoms;
     })
-    console.log("symptoms: ", symptoms.join(' '))
+    console.log("symptoms: ", symptoms)
   }
 
   return (

@@ -5,7 +5,7 @@ const recipes = [
   {
     title: 'Spring Minestrone',
     dishType: 'Soup',
-    symptoms: 'N C SM',
+    symptoms: ['N', 'C', 'SM'],
     description: `In warmer months, a light vegetable soup highlighting fresh flavors from the garden is highly desirable. This soup doesn’t skimp on the veggies or legumes. Edamame (green soybeans often served at Japanese restaurants) provide added protein, fiber, and many other nutrients. A flurry of fresh herbs provides aromatic endnotes, and a splash of lemon juice adds a bright hint of spring.
 
     This is a “vegetable-centric” soup. If you want a thinner version, add one to two more cups of broth.`,
@@ -66,7 +66,7 @@ const recipes = [
   {
     title: 'Baked Rice Balls',
     dishType: 'Rice',
-    symptoms: 'N D',
+    symptoms: ['N', 'D'],
     description: `These mild baked nuggets of rice are simple enough to appeal even when you’re feeling fragile. Adding Italian seasoning and using a stronger-flavored cheese, such as Parmesan, perks them up a little. For added flavor, family members can dip them in pasta sauce.
 
     Make extra rice the night before to use for these balls.`,
@@ -111,7 +111,7 @@ const recipes = [
   {
     title: 'Tuna Salad',
     dishType: 'Salad',
-    symptoms: 'C TC',
+    symptoms: ['C', 'TC'],
     description: `This colorful mayonnaise-based salad, served on a bed of greens, is full of healthful vegetables. Add whichever embellishments you enjoy: olives, artichoke hearts, hard-boiled eggs, and cucumber are good options.`,
     servings: '3 Servings',
     ingredients: `1 (5-ounce) can white tuna packed in water, drained
@@ -156,7 +156,7 @@ const recipes = [
   {
     title: 'Roasted Cauliflower Soup',
     dishType: 'Soup',
-    symptoms: 'TS SM',
+    symptoms: ['TS', 'SM'],
     description: `This creamy, mild soup requires almost no labor. The main ﬂavoring comes simply from the caramelization of the roasted cauliﬂower. A hint of cream adds lushness.
 
     For stronger ﬂavor, add two to three minced garlic cloves to the cauliﬂower before roasting. Another option is to sprinkle cauliﬂower with one teaspoon fresh thyme leaves and/or two tablespoons freshly grated Parmesan cheese during the last five to ten minutes of roasting.
@@ -199,7 +199,7 @@ const recipes = [
   {
     title: 'Scrambled Eggs with Cream Cheese and Chives',
     dishType: 'Eggs',
-    symptoms: 'TS SM WL',
+    symptoms: ['TS', 'SM', 'WL'],
     description: `Eggs are so versatile and can be eaten virtually any time of day. When you are looking to add calories and feel indulged, this pairing of eggs and cream cheese satisfies hunger with a lush mouth-feel. A sprinkle of chives makes it sing.
 
     If your mouth is very tender, omit the chives. If you are having trouble swallowing, make sure the eggs are softly scrambled.`,
@@ -232,7 +232,7 @@ const recipes = [
   {
     title: 'Beef and Spinach Lasagna with Parmesan Sauce',
     dishType: 'Pasta',
-    symptoms: 'WL TC',
+    symptoms: ['WL', 'TC'],
     description: `This creamy pasta casserole uses a béchamel sauce instead of mozzarella for a rich, comforting, and satisfying meal that’s lighter than a typical lasagna.`,
     servings: '8 Servings',
     ingredients: `1 tablespoon olive oil
@@ -285,7 +285,7 @@ const recipes = [
   {
     title: 'Shrimp Puttanesca',
     dishType: 'Seafood',
-    symptoms: 'C TC',
+    symptoms: ['C', 'TC'],
     description: `When your taste buds need a little resuscitation, try this salty, spicy shrimp dish. Olives, capers, and anchovies add brininess, and garlic and red pepper ﬂakes provide intensity. Start with these amounts and adjust ingredients to taste if you are craving salt or want more heat. Enjoy on its own or serve with a grain or pasta of your choice.`,
     servings: '4 Servings',
     ingredients: `2 tablespoons olive oil
@@ -332,7 +332,7 @@ const recipes = [
   {
     title: 'Curried Chicken and Rice',
     dishType: 'Indian',
-    symptoms: 'C WL TC',
+    symptoms: ['C', 'WL', 'TC'],
     description: `This fragrant curry dish provides a lot of flavor without being overpowering. If you’re new to curry, use two tablespoons curry powder as indicated; if you want more intense flavor, three tablespoons will do it.
 
     Because the rice and chicken cook together, simply add a green salad to round out the meal.
@@ -393,7 +393,7 @@ const recipes = [
   {
     title: 'Spinach-Artichoke Dip Quesadillas',
     dishType: 'Mexican',
-    symptoms: 'C WL TC',
+    symptoms: ['C', 'WL', 'TC'],
     description: `Here’s a twist on everyone’s favorite party dip. While it’s delicious on its own or eaten with crudité or crackers, sandwiching it between two tortillas and heating it makes it an easy-to-eat snack or small meal.
 
     Dry the artichokes and spinach well to keep the mixture from getting too waterlogged.`,
@@ -442,7 +442,7 @@ const recipes = [
   {
     title: 'Miso-Glazed Salmon',
     dishType: 'Seafood',
-    symptoms: 'D TC',
+    symptoms: ['D', 'TC'],
     description: `A simple glaze made with soy sauce and miso (a Japanese paste made of fermented soybeans) is the perfect complement to baked salmon. Miso is found in the refrigerated section of most supermarkets.
 
     When the salmon is almost done cooking, switch the oven setting from bake to broil to caramelize the sugar in the sauce. Keeping the baking pan in the middle position of the oven, away from the heating unit, prevents the topping from browning too quickly.
