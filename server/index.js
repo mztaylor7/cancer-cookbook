@@ -17,12 +17,14 @@ var searchDB = (searchTerm, filter) => {
   if (filter) {
     result = {
       $and: [
-        $or: [{"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}],
+        { $or: [{"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]},
         {"symptoms": { $all: filter}}
       ]
     }
   } else {
-    result = { $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]}
+    result = {
+      $or: [ {"title": { "$regex": searchTerm, "$options": "i"}}, {"ingredients": { "$regex": searchTerm, "$options": "i"}}, {"description": { "$regex": searchTerm, "$options": "i"}}, {"dishType": { "$regex": searchTerm, "$options": "i"}}]
+    }
   }
 
   return result;
@@ -52,8 +54,8 @@ app.get('/api/recipes/search', (req, res) => {
 
 app.get('/api/recipes/filter', (req, res) => {
   const searchTerm = req.query.search;
-  const filter = req.query.filter;
-  Recipes.find(searchDB(searchTerm)).exec(()).limit(10)
+  const filter = req.query.filter.split('-');
+  Recipes.find(searchDB(searchTerm, filter)).limit(10)
     .then((recipes) => {
       res.status(200).json(recipes);
     })

@@ -31,13 +31,13 @@ const Filter = ({ query, setLoading, setRecipes }) => {
   }
 
   useEffect(() => {
-    console.log('useEffect');
-    // if(query) {
-    //   console.log('query: ', query)
-    //   searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join('')}`);
-    // }
-    console.log('query: ', query)
-    searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join('')}`)
+    if (query) {
+      if (symptoms.length > 0) {
+        searchRecipes(`/api/recipes/filter?search=${query}&filter=${symptoms.join('-')}`);
+      } else {
+        searchRecipes(`/api/recipes/search?search=${query}`);
+      }
+    }
   }, [symptoms.length])
 
   const symptomParser = (symptom) => {
@@ -97,17 +97,23 @@ const Filter = ({ query, setLoading, setRecipes }) => {
   Taste Changes - TC
 */
 
+  const symptomChanger = (value) => {
+    var index = symptoms.indexOf(value)
+      if (index !== -1) {
+        symptoms.filter((e) => (e !== value));
+      } else {
+        [...symptoms, value];
+      }
+  }
+
   const selectionChanged = (e) => {
     var value = e.target.value
-    setSymptoms(symptoms => {
-      var index = symptoms.indexOf(value)
-      if (index !== -1) {
-        symptoms.splice(index, 1);
-      } else {
-        symptoms.push(value);
-      }
-      return symptoms;
-    })
+    var index = symptoms.indexOf(value)
+    if (index !== -1) {
+      setSymptoms(symptoms.filter((e) => (e !== value)))
+    } else {
+      setSymptoms([...symptoms, value])
+    }
     console.log("symptoms: ", symptoms)
   }
 
