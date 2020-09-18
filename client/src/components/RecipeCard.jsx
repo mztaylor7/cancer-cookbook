@@ -5,16 +5,11 @@ import styled from 'styled-components';
 
 const RecipeCard = ({recipe}) => {
 
-  const symptomParse = () => {
-    return recipe.symptoms.split(' ');
-
-  }
-
   return (
     <Container>
       <h2>{recipe.title}</h2>
       <label>Symptoms:</label>
-      {symptomParse().map((symptom, i) => {
+      {recipe.symptoms.map((symptom, i) => {
         return <li key={i}>{symptom} </li>
       })}
       <br/>

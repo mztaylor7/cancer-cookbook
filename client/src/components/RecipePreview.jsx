@@ -8,11 +8,54 @@ const RecipePreview = (props) => {
   const { recipe } = props;
   const {isShowing, toggle} = useModal();
 
+  const symptomIcons = (symptom, i) => {
+    var colorPicker = symptom => {
+      if (symptom === 'N') {
+        return '#dc0060';
+      } else if (symptom === 'D') {
+        return '#1b2383';
+      } else if (symptom === 'C') {
+        return '#f7652c';
+      } else if (symptom === 'TS') {
+        return '#a20282';
+      } else if (symptom === 'SM') {
+        return '#228eca';
+      } else if (symptom === 'WL') {
+        return '#81c444';
+      } else if (symptom === 'TC') {
+        return '#ebbb54';
+      }
+    }
+
+    var divStyle = {
+      color: 'white',
+      backgroundColor: colorPicker(symptom),
+      height: '25px',
+      width: '30px',
+      margin: '0px 2px',
+      textAlign: 'center',
+      lineHeight: '25px'
+    }
+
+    return(
+      <div key={i} style={divStyle}>
+        {symptom}
+      </div>
+    )
+  }
+
   return (
     <div className="preview-wrapper" onClick={toggle}>
       <Container>
         <ImageCon>
           <img className={"recipePreviewImage"} src={recipe.image}/>
+          <div className={"recipeSymptoms"}>
+            {
+              recipe.symptoms.map((symptom, i) => {
+                return symptomIcons(symptom, i);
+              })
+            }
+          </div>
         </ImageCon>
         <Title>
           <p>{recipe.title}</p>

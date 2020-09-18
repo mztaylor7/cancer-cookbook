@@ -4,7 +4,6 @@ import '../styles.scss';
 import axios from 'axios';
 
 const Filter = ({ query, setLoading, setRecipes }) => {
-  // const { query, searchRecipes, setLoading } = props;
   const [symptoms, setSymptoms] = useState([]);
 
   let cancelToken;
