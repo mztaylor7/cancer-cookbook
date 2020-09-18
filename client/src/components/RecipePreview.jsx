@@ -32,7 +32,7 @@ const RecipePreview = (props) => {
       backgroundColor: colorPicker(symptom),
       height: '25px',
       width: '30px',
-      margin: '0px 2px',
+      marginRight: '4px',
       textAlign: 'center',
       lineHeight: '25px'
     }
@@ -80,10 +80,10 @@ const ImageCon = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: auto;
+  height: 208px;
   border-radius: 4px;
   margin-bottom: .5rem;
-  padding-bottom: 100%;
+  // padding-bottom: 100%;
 `
 const Title = styled.div`
   display: flex;
