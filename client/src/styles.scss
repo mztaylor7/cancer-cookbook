@@ -5,7 +5,7 @@
 body {
   background-color: #eeeee4;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -160,3 +160,51 @@ body {
   z-index: 10;
   position: relative;
 }
+
+.filterWrap {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.filterHead {
+  text-align: center;
+  height: 2rem;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+.filterForm {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+}
+
+.filter {
+  display: inline-block;
+  text-align: center;
+  margin: 0px .5rem .25rem;
+  border-radius: 2rem;
+  min-width: 50px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.filter:hover {
+  background: #49b293;
+  color: white;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+
+// input[type=checkbox]:checked + label {
+//   background: #49b293;
+//   color: white;
+// }

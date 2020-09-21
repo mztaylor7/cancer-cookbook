@@ -65,27 +65,10 @@ const Filter = ({ query, setLoading, setRecipes }) => {
     }
   }
 
-  var radioButton = (radioName, index) => {
-    var radioNameLower = radioName[0].toLowerCase() + radioName.substring(1);
-    var noSpace;
-    var parsed = symptomParser(radioName);
-    if (radioNameLower.indexOf(" ") !== -1) {
-      noSpace = radioNameLower.replace(/\s+/g, '');
-    } else {
-      noSpace = radioNameLower;
-    }
-
-    return(
-    <label key={index}>
-      <input type="checkbox" name={noSpace} value={parsed} key={index} onChange={selectionChanged} />
-      {radioName}
-    </label>
-    )
-  }
 
   var symptomsList = ["Nasuea", "Diarrhea", "Constipation", "Trouble Swallowing", "Sore Mouth", "Unintentional Weight Loss", "Taste Changes"]
 
-/*
+  /*
   Symptoms
   Nasuea - N
   Diarrhea - D
@@ -94,15 +77,15 @@ const Filter = ({ query, setLoading, setRecipes }) => {
   Sore Mouth - SM
   Unintentional Weight Loss - WL
   Taste Changes - TC
-*/
+  */
 
   const symptomChanger = (value) => {
     var index = symptoms.indexOf(value)
-      if (index !== -1) {
-        symptoms.filter((e) => (e !== value));
-      } else {
-        [...symptoms, value];
-      }
+    if (index !== -1) {
+      symptoms.filter((e) => (e !== value));
+    } else {
+      [...symptoms, value];
+    }
   }
 
   const selectionChanged = (e) => {
@@ -116,15 +99,36 @@ const Filter = ({ query, setLoading, setRecipes }) => {
     console.log("symptoms: ", symptoms)
   }
 
+  var radioButton = (radioName, index) => {
+    var radioNameLower = radioName[0].toLowerCase() + radioName.substring(1);
+    var noSpace;
+    var parsed = symptomParser(radioName);
+    if (radioNameLower.indexOf(" ") !== -1) {
+      noSpace = radioNameLower.replace(/\s+/g, '');
+    } else {
+      noSpace = radioNameLower;
+    }
+
+    return(
+    <label  className={"filter"} key={index}>
+      <input type="checkbox" name={noSpace} value={parsed} key={index} onChange={selectionChanged} />
+      <label>{radioName}</label>
+    </label>
+    )
+  }
+
   return (
     <div className={"sortGrid"}>
-      <h3>Filter</h3>
-      <form>
-        <label>Symptoms:</label>
-        {symptomsList.map((symptom, i) => {
-          return radioButton(symptom, i);
-        })}
-      </form>
+      <div className={"filterWrap"}>
+        <div className={"filterHead"}>Filter</div>
+        <form className={"filterForm"}>
+          <label style={{fontSize: 'large', width: "100%"}}>Symptoms</label>
+          <hr/>
+          {symptomsList.map((symptom, i) => {
+            return radioButton(symptom, i);
+          })}
+        </form>
+      </div>
     </div>
   )
 }
