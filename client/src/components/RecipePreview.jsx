@@ -61,7 +61,7 @@ const RecipePreview = (props) => {
           <p>{recipe.title}</p>
         </Title>
         <Description>
-          <p>{recipe.description.substring(0, 60)}</p>
+          <p style={{marginTop: '0px'}}>{recipe.description.split(' ').slice(0, 9).join(' ')}<em style={{color: '#717a82'}}> READ MORE...</em></p>
         </Description>
         <RecipeModal isShowing={isShowing} hide={toggle} recipe={recipe}/>
       </Container>
@@ -73,7 +73,7 @@ const Container = styled.div`
   position: relative;
   display: block;
   width: 100%;
-  min-height: 400px;
+  height: 350px;
   box-sizing: border-box;
 `
 const ImageCon = styled.div`
@@ -88,6 +88,8 @@ const ImageCon = styled.div`
 const Title = styled.div`
   display: flex;
   flex-direction: row;
+  min-height: 72px;
+  font-weight: bold;
 `
 
 const Description = styled.div`
