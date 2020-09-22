@@ -5,6 +5,25 @@ import axios from 'axios';
 
 const Filter = ({ query, setLoading, setRecipes }) => {
   const [symptoms, setSymptoms] = useState([]);
+  const [bgColor, setbgColor] = useState(listOfSymp);
+
+  var symptomsList = ["Nasuea", "Diarrhea", "Constipation", "Trouble Swallowing", "Sore Mouth", "Unintentional Weight Loss", "Taste Changes"];
+
+  var symptomsListAbr = ['N', 'D', 'C', 'TS', 'SM', 'WL', 'TC'];
+
+  const listBGColors = () => {
+    var bgContainer = {};
+    for (var i = 0; i < symptomsListAbr.length; i++) {
+      let symptom = symptomsListAbr[i];
+      bgContainer[symptom] = {
+        background: 'white',
+        color: 'black'
+      }
+    }
+    return bgContainer;
+  }
+
+  var listOfSymp = listBGColors();
 
   let cancelToken;
   const searchRecipes = async (url) => {
@@ -66,7 +85,6 @@ const Filter = ({ query, setLoading, setRecipes }) => {
   }
 
 
-  var symptomsList = ["Nasuea", "Diarrhea", "Constipation", "Trouble Swallowing", "Sore Mouth", "Unintentional Weight Loss", "Taste Changes"]
 
   /*
   Symptoms
@@ -90,13 +108,36 @@ const Filter = ({ query, setLoading, setRecipes }) => {
 
   const selectionChanged = (e) => {
     var value = e.target.value
+    bgColorChange(value);
     var index = symptoms.indexOf(value)
     if (index !== -1) {
-      setSymptoms(symptoms.filter((e) => (e !== value)))
+      setSymptoms(symptoms.filter((event) => (event !== value)))
     } else {
       setSymptoms([...symptoms, value])
     }
     console.log("symptoms: ", symptoms)
+  }
+
+  const bgColorChange = (value) => {
+    console.log('bgColor: ', bgColor);
+    var stateObj = {};
+    if (bgColor.value.background === 'white') {
+      stateObj = {
+        background: '#49b293',
+        color: 'white'
+      }
+      var newObj = bgColor;
+      newObj[value] = stateObj;
+      setbgColor(newObj);
+    } else if (bgColor[value].background === '#49b293') {
+      stateObj = {
+        background: 'white',
+        color: 'black'
+      }
+      var newObj = bgColor;
+      newObj[value] = stateObj;
+      setbgColor(newObj);
+    }
   }
 
   var radioButton = (radioName, index) => {
@@ -110,9 +151,9 @@ const Filter = ({ query, setLoading, setRecipes }) => {
     }
 
     return(
-    <label  className={"filter"} key={index}>
-      <input type="checkbox" name={noSpace} value={parsed} key={index} onChange={selectionChanged} />
-      <label>{radioName}</label>
+    <label className={"filter"} key={index}>
+      <input type="checkbox" name={noSpace} value={parsed} key={index} onClick={selectionChanged} />
+      <label style={{cursor: "pointer"}}>{radioName}</label>
     </label>
     )
   }
