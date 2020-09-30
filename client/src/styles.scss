@@ -199,6 +199,11 @@ body {
   color: white;
 }
 
+.filter:active {
+  background: #49b293;
+  color: white;
+}
+
 input[type="checkbox"] {
   position: absolute;
   left: -9999px;
